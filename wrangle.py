@@ -27,15 +27,15 @@ WHERE propertylandusedesc IN ("Single Family Residential", "Inferred Single Fami
 #----------------------------------------------------------#
 #def function + csv
 
-def get_zillow_data():
+def zillow_data():
     '''
     This function reads in iris data from Codeup database, writes data to
     a csv file if a local file does not exist, and returns a df.
     '''
-    if os.path.isfile('zillow.csv'):
+    if os.path.isfile('zillow_df.csv'):
         
         # If csv file exists read in data from csv file.
-        df = pd.read_csv('telco.csv', index_col=0)
+        df = pd.read_csv('zillow_df.csv', index_col=0)
         
     else:
         
@@ -43,6 +43,6 @@ def get_zillow_data():
         df = get_zillow_data()
         
         # Cache data
-        df.to_csv('zillow.csv')
+        df.to_csv('zillow_df.csv')
         
     return df
