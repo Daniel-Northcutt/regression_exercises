@@ -14,7 +14,7 @@ def get_connection(db, user=env.user, host=env.host, password=env.password):
 #----------------------------------------------------------#
 #get zillow from SQL
 
-def get_zillow_data(df):
+def new_zillow_data(df):
     sql_query = '''
     SELECT bedroomcnt, bathroomcnt, calculatedfinishedsquarefeet, taxvaluedollarcnt, yearbuilt, taxamount, fips
 FROM properties_2017
@@ -27,7 +27,7 @@ WHERE propertylandusedesc IN ("Single Family Residential", "Inferred Single Fami
 #----------------------------------------------------------#
 #def function + csv
 
-def zillow_data():
+def get_zillow_data():
     '''
     This function reads in iris data from Codeup database, writes data to
     a csv file if a local file does not exist, and returns a df.
@@ -40,7 +40,7 @@ def zillow_data():
     else:
         
         # Read fresh data from db into a DataFrame
-        df = get_zillow_data()
+        df = new_zillow_data()
         
         # Cache data
         df.to_csv('zillow_df.csv')
